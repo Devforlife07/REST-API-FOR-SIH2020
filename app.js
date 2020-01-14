@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const jwt = require("jsonwebtoken");
 const app = express();
 dotenv.config({
   path: "config/config.env"
@@ -9,6 +10,8 @@ require("./db/db")();
 app.use(express.json());
 //Routes
 app.use("/signup", require("./routes/signup"));
+app.use("/login", require("./routes/login"));
+console.log(jwt)
 app.get("/", (req, res) => {
   res.send(JSON.stringify(req.headers, null, 2) + "API IS UNDER CONSTRUCTION");
 });
