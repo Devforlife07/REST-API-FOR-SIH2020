@@ -7,7 +7,7 @@ router.get("/:id", (req, res) => {
     report.findOne({
         uid: id
     }).then(item => {
-        if (!item[item])
+        if (!item)
             res.send({
                 message: "failure"
             })
