@@ -4,7 +4,11 @@ const app = express();
 dotenv.config({
   path: "config/config.env"
 });
+require("./db/db")();
+//Body-Parser Middleware
 app.use(express.json());
+//Routes
+app.use("/signup", require("./routes/signup"));
 app.get("/", (req, res) => {
   res.send(JSON.stringify(req.headers, null, 2) + "API IS UNDER CONSTRUCTION");
 });
