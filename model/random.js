@@ -17,7 +17,7 @@ const random = new Schema({
     },
     person: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "sihusers"
+        ref: "sihuser"
 
     }
 })

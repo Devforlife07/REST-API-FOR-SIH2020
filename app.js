@@ -1,7 +1,9 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
 const app = express();
+const rep = require("./model/random");
 dotenv.config({
   path: "config/config.env"
 });
@@ -20,6 +22,16 @@ app.get("/", (req, res, next) => {
   } else {
     res.send("No user found")
   }
+})
+app.get("/test/:id", (req, res) => {
+  const id = req.params.id;
+  rep.findOne({
+    uid: id
+  }).populate("person").then(item => {
+    res.send(item)
+  }).catch(err => {
+    res.send(err);
+  })
 })
 // app.get("/", (req, res) => {
 //   res.send(JSON.stringify(req.headers, null, 2) + "API IS UNDER CONSTRUCTION");
