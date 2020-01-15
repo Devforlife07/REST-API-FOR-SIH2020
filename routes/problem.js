@@ -2,8 +2,9 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 const problem = require("../model/problem");
 const report = require("../model/random");
+const auth = require("../config/auth");
 
-router.get("/", (req, res) => {
+router.get("/", auth, (req, res) => {
     report.find({}).then(item => {
         let problem = [];
         item.forEach(values => {
