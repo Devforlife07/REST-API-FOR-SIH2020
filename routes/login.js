@@ -10,9 +10,9 @@ router.post("/", (req, res) => {
     user.findOne({
         uid
     }).then(item => {
-        res.send({
+        res.send(
             item
-        });
+        );
     }).catch(err => res.send(err));
 
 })
