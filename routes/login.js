@@ -9,8 +9,9 @@ router.post("/", (req, res) => {
     user.findOne({
         uid
     }).then(item => {
-        req.user = item.name
-        res.send(item);
+        res.send({
+            uid: item.uid
+        });
     }).catch(err => res.send(err));
 
 })
