@@ -4,7 +4,7 @@ const problem = require("../model/problem");
 const report = require("../model/random");
 const auth = require("../config/auth");
 
-router.get("/", auth, (req, res) => {
+router.get("/", (req, res) => {
     report.find({}).then(item => {
         let problem = [];
         item.forEach(values => {
