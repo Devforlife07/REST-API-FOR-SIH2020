@@ -24,7 +24,7 @@ router.post("/test", (req, res) => {
     user.findOne({
         uid
     }).then(item => {
-        console.log(req.header);
+        console.log(req.headers);
         const token = jwt.sign({
             name: item.name,
             uid: item.uid
