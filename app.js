@@ -16,6 +16,10 @@ app.use("/signup", require("./routes/signup"));
 app.use("/login", require("./routes/login"));
 app.use("/report", require("./routes/report"));
 app.use("/problem", require("./routes/problem"));
+app.use((req, res, next) => {
+  console.log(req.headers);
+  next();
+})
 app.get("/", (req, res, next) => {
   if (req.user) {
     res.send(req.user)
