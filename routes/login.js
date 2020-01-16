@@ -29,7 +29,7 @@ router.post("/test", (req, res) => {
             name: item.name,
             uid: item.uid
         }, process.env.SECRET)
-        res.header("authorization", token);
+        res.setHeader("authorization", token);
         res.send({
             message: "Success",
             token: token
