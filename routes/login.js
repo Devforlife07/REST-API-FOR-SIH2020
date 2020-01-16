@@ -24,12 +24,12 @@ router.post("/test", (req, res) => {
     user.findOne({
         uid
     }).then(item => {
-
+        console.log(req.header);
         const token = jwt.sign({
             name: item.name,
             uid: item.uid
         }, process.env.SECRET)
-        res.setHeader("authorization", token);
+        res.setHeader("auth", token);
         res.send({
             message: "Success",
             token: token

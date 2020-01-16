@@ -18,12 +18,7 @@ router.get("/test", auth, (req, res) => {
 });
 router.get("/", (req, res) => {
     report.find({}).then(item => {
-        // let problem = [];
-        // item.forEach(values => {
-        //     problem.push({
-        //         values
-        //     });
-        // })
+
         res.send(
             item
         )
