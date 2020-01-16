@@ -18,18 +18,20 @@ const auth = require("../config/auth");
 //     }).catch(err => res.send(err))
 // });
 router.get("/", auth, (req, res) => {
-    report.find({}).then(item => {
-        console.log(req.user)
-        let problem = [];
-        item.forEach(values => {
-            problem.push({
-                problem: values.problem
-            });
-        })
-        res.send(
-            problem
-        )
-    }).catch(err => res.send(err))
+  report
+    .find({})
+    .then(item => {
+      console.log(req.user);
+      let problem = [];
+      item.forEach(values => {
+        problem.push(values);
+      });
+      res.send(problem);
+    })
+    .catch(err => res.send(err));
+});
+router.put("/", auth, (req, res) => {
+  report.findOne({ uid }).then(item => {});
 });
 
 module.exports = router;
