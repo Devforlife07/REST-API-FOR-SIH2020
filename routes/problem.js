@@ -5,6 +5,7 @@ const report = require("../model/random");
 const auth = require("../config/auth");
 router.get("/test", auth, (req, res) => {
     report.find({}).then(item => {
+        console.log(req.user)
         let problem = [];
         item.forEach(values => {
             problem.push({
@@ -24,4 +25,5 @@ router.get("/", (req, res) => {
         )
     }).catch(err => res.send(err))
 });
+
 module.exports = router;
