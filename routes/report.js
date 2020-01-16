@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const report = require("../model/random");
+const auth = require("../config/auth");
 
-router.get("/:id", (req, res) => {
+router.get("/:id", auth, (req, res) => {
     let id = req.params.id;
     report.findOne({
         uid: id
@@ -17,7 +18,7 @@ router.get("/:id", (req, res) => {
             })
     }).catch(err => res.send(err));
 });
-router.post("/", (req, res) => {
+router.post("/", auth, (req, res) => {
     const {
         uid,
         name,
