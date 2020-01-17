@@ -3,6 +3,7 @@ const mongooose = require("mongoose");
 const user = require("../model/user");
 const jwt = require("jsonwebtoken");
 const problem = require("../model/random");
+const auth = require("../config/auth")
 router.post("/", (req, res) => {
   const {
     uid,
@@ -20,14 +21,42 @@ router.post("/", (req, res) => {
         process.env.SECRET
       );
       res.setHeader("auth", token);
-      console.log(item)
-      problem.find({
-        person: item._id
-      }).then(problems => {
+
+      problem.find({}).then(problems => {
+        let output1 = [];
+
+        // problems.forEach(value => {
+        //   console.log(value);
+        // })
+        problems.forEach(problems2 => {
+          let a = [];
+          problems2.problems.forEach(value => {
+            output1.push(value)
+          })
+        })
+        // let output2 = [];
+        // output1.forEach(value => {
+        //   console.log(item)
+        //   console.log(value.person)
+        //   if (value.person == item._id) {
+        //     console.log(value);
+        //     output2.push(value);
+        //   }
+        // })
+        console.log("hi" + item._id);
+        let output2 = [];
+        output1.forEach(t => {
+          console.log(t.person);
+          if (t.person.toString() == item._id) {
+            output2.push(t);
+          }
+        })
+
+
         res.send({
           item,
           token,
-          problems
+          problems: output2
         })
       })
 
