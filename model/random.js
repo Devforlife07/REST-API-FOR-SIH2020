@@ -12,12 +12,19 @@ const random = new Schema({
     address: {
         type: String
     },
-    problem: {
-        type: String,
-    },
-    person: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "sihuser"
-    }
+    problems: [{
+        problem: {
+            type: String
+        },
+        person: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "sihuser"
+        }
+
+    }]
+    // person: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "sihuser"
+    // }
 })
 module.exports = mongoose.model("report", random);

@@ -5,26 +5,25 @@ const report = require("../model/random");
 const auth = require("../config/auth");
 
 router.get("/", auth, (req, res) => {
-    report
-        .find({
-            person: req.user.item._id
-        })
-        .then(item => {
-            console.log(req.user);
-            let problem = [];
-            item.forEach(values => {
-                problem.push(values);
-            });
-            res.send(problem);
-        })
-        .catch(err => res.send(err));
+  report
+    .find({})
+    .then(item => {
+      console.log(req.user);
+      let problem = [];
+      item.forEach(values => {
+        problem.push(values);
+      });
+      res.send(problem);
+    })
+    .catch(err => res.send(err));
 });
 router.put("/", auth, (req, res) => {
-    report.findOne({
-        person: req.user.item._id
-    }).then(item => {
-        const problem = req.body.problem;
-
+  report
+    .findOne({
+      person: req.user.item._id
+    })
+    .then(item => {
+      const problem = req.body.problem;
     });
 });
 
