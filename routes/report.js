@@ -3,10 +3,11 @@ const mongoose = require("mongoose");
 const report = require("../model/random");
 const auth = require("../config/auth");
 
-router.get("/:id", auth, (req, res) => {
+router.get("/", auth, (req, res) => {
     let id = req.params.id;
+    console.log(req.user.item._id);
     report.findOne({
-        uid: id
+        person: req.user.item._id
     }).then(item => {
         if (!item)
             res.send({
@@ -26,7 +27,7 @@ router.post("/", auth, (req, res) => {
         problem,
     } = req.body;
     let user = req.user;
-    console.log(user);
+    // console.log(user);
     const newrep = new report({
         uid,
         name,

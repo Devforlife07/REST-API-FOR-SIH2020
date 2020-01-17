@@ -19,7 +19,9 @@ const auth = require("../config/auth");
 // });
 router.get("/", auth, (req, res) => {
     report
-        .find({})
+        .find({
+            person: req.user.item._id
+        })
         .then(item => {
             console.log(req.user);
             let problem = [];
@@ -34,7 +36,8 @@ router.put("/", auth, (req, res) => {
     report.findOne({
         person: req.user.item._id
     }).then(item => {
-        res.send("Sab Changasi");
+        const problem = req.body.problem;
+
     });
 });
 
