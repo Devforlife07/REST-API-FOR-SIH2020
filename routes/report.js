@@ -3,12 +3,10 @@ const mongoose = require("mongoose");
 const report = require("../model/random");
 const auth = require("../config/auth");
 
-router.get("/", auth, (req, res) => {
+router.get("/:id", auth, (req, res) => {
     let id = req.params.id;
-    console.log(req.user.item._id);
-    report.findOne({
-        person: req.user.item._id
-    }).then(item => {
+    console.log(req.user._id);
+    report.findOne({}).then(item => {
         if (!item)
             res.send({
                 message: "failure"
