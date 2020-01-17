@@ -6,7 +6,9 @@ const auth = require("../config/auth");
 router.get("/:id", auth, (req, res) => {
     let id = req.params.id;
     console.log(req.user._id);
-    report.findOne({}).then(item => {
+    report.findOne({
+        uid: id
+    }).then(item => {
         if (!item)
             res.send({
                 message: "failure"
