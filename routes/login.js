@@ -24,13 +24,10 @@ router.post("/", (req, res) => {
       problem.find({
         person: item._id
       }).then(problems => {
-        let problem = [];
-        problems.forEach(x => problem.push(x.problem));
-        console.log(problem);
         res.send({
           item,
           token,
-          problem
+          problems
         })
       })
 
