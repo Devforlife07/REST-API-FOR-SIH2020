@@ -24,15 +24,17 @@ router.post("/", auth, (req, res) => {
         name,
         address,
         problem,
-        person
     } = req.body;
+    let user = req.user;
+    console.log(user);
     const newrep = new report({
         uid,
         name,
         address,
         problem,
-        person
+        person: user.item._id
     });
+
     newrep.save().then(item => res.send(item)).catch(err => res.send(err));
 })
 
