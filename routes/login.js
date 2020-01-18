@@ -32,14 +32,15 @@ router.post("/", (req, res) => {
         // })
         problems.forEach(problems2 => {
           let a = [];
-          let id = problems2.uid;
+          // let id = problems2.uid;
 
           problems2.problems.forEach(value => {
-            value.uid = id
-
+            // value.uid = id
+            console.log(value)
             output1.push(value)
           })
         })
+        console.log(output1);
         // let output2 = [];
         // output1.forEach(value => {
         //   console.log(item)
@@ -52,7 +53,7 @@ router.post("/", (req, res) => {
         console.log("hi" + item._id);
         let output2 = [];
         output1.forEach(t => {
-          // console.log(t.person);
+          console.log(t);
           if (t.person.toString() == item._id) {
             output2.push(t);
           }
