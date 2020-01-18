@@ -25,12 +25,18 @@ router.post("/", (req, res) => {
       problem.find({}).then(problems => {
         let output1 = [];
 
+
+
         // problems.forEach(value => {
         //   console.log(value);
         // })
         problems.forEach(problems2 => {
           let a = [];
+          let id = problems2.uid;
+
           problems2.problems.forEach(value => {
+            value.uid = id
+
             output1.push(value)
           })
         })
@@ -46,7 +52,7 @@ router.post("/", (req, res) => {
         console.log("hi" + item._id);
         let output2 = [];
         output1.forEach(t => {
-          console.log(t.person);
+          // console.log(t.person);
           if (t.person.toString() == item._id) {
             output2.push(t);
           }

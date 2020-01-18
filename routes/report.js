@@ -42,5 +42,20 @@ router.post("/", auth, (req, res) => {
     // newrep.problems.push(prob);
     newrep.save().then(item => res.send(item)).catch(err => res.send(err));
 })
+router.put("/", auth, (req, res) => {
+    console.log(req.user.item._id);
+    report.findOne({
+        uid: req.body.uid
+    }).then(item => {
+        let problem = req.body.problem
+        let user = req.user.item._id;
+        item.problems.push({
+            problem,
+            person: user
+        });
+        item.save().then(value => res.send(value)).catch(err => res.send(err));
+
+    })
+})
 
 module.exports = router;
