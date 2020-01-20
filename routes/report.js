@@ -30,7 +30,8 @@ router.post("/", auth, (req, res) => {
     // console.log(user);
     let prob = {
         problem: problem,
-        person: user.item._id
+        person: user.item._id,
+        uid: uid
     }
     console.log(prob)
     let newrep = new report({
@@ -51,7 +52,8 @@ router.put("/", auth, (req, res) => {
         let user = req.user.item._id;
         item.problems.push({
             problem,
-            person: user
+            person: user,
+            uid: req.body.uid
         });
         item.save().then(value => res.send(value)).catch(err => res.send(err));
 

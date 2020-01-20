@@ -19,6 +19,9 @@ const random = new Schema({
         person: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "sihuser"
+        },
+        uid: {
+            type: String
         }
 
     }]
