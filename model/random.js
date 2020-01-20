@@ -22,7 +22,11 @@ const random = new Schema({
         },
         uid: {
             type: String
-        }
+        },
+        resolve: {
+            type: Boolean,
+            default: false
+        },
 
     }]
     // person: {
