@@ -26,7 +26,7 @@ const random = new Schema({
         resolve: {
             type: Boolean,
             default: false
-        },
+        }
 
     }]
     // person: {
