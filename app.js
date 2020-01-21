@@ -21,6 +21,7 @@ app.use("/login", require("./routes/login"));
 app.use("/report", require("./routes/report"));
 app.use("/problem", require("./routes/problem"));
 app.use("/component", require("./routes/component"));
+app.use("/resolve", require("./routes/resolve"));
 
 app.get("/", (req, res, next) => {
   if (req.user) {
