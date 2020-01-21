@@ -9,6 +9,10 @@ router.put("/", auth, (req, res) => {
     }).then(item => {
         item.problems.forEach(value => {
             if (value._id == req.body.id) {
+                if (value.resolve == true)
+                    res.send({
+                        message: "Already Resolved"
+                    })
                 value.resolve = true
                 item.save().then(val => {
                     res.send(val);
