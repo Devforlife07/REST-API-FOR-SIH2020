@@ -7,6 +7,11 @@ router.put("/", auth, (req, res) => {
     problem.findOne({
         uid: req.body.uid
     }).then(item => {
+        if (!item)
+            return res.status(400).send({
+                message: "Invalid Uid"
+            })
+        console.log(item)
         item.problems.forEach(value => {
             if (value._id == req.body.id) {
                 if (value.resolve == true) {
